@@ -10,6 +10,14 @@ class User(db.Model):
     email = db.Column(db.Unicode(255), nullable=False, info={'label': 'E-mail'})
 
 
+class Location(db.Model):
+    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    name = db.Column(db.Unicode(100), nullable=True, info={'label': 'Name'})
+    event_id = db.Column(db.ForeignKey('event.id'))
+    event = db.relationship('Event', backref=db.backref('locations',
+                                                        cascade='all, delete-orphan'))
+
+
 class Event(db.Model):
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     start_at = db.Column(db.Date(), nullable=False, info={'label': 'Start Date'})

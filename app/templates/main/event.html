@@ -27,6 +27,17 @@
                     </p>
                 </div>
             </div>
+            {% for entry in form.locations %}
+            <div class="field">
+                <label class="label">
+                    {{ entry.label }}
+                </label>
+                <div class="control">
+                    <!-- note that to render each input field we need to access form attribute -->
+                    {{ entry.form.name.label }} {{ entry.form.name(class='input') }}
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
