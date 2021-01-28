@@ -10,3 +10,8 @@
 * created the index page by extending the base template
 * created a form instance to be sent to the index page to be rendered
 * rendered the form
+* created an event model and form
+* modified some form arguments in the event form
+* used default date as a default value for the start field
+* set the date format for the start field
+* styled the event page

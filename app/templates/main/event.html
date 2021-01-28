@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Event Form{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            {{ form.hidden_tag() }}
+            <div class="field">
+                <label class="label">
+                    {{ form.start_at.label }}
+                </label>
+                <div class="control">
+                    {{ form.start_at(class='input', type='date') }}
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">
+                    {{ form.type.label }}
+                </label>
+                <div class="control">
+                    <div class="select">
+                        {{ form.type() }}
+                    </div>
+                    <p class="help is-info">
+                        {{ form.type.description }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
