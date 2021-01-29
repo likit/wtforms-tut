@@ -5,13 +5,14 @@
 <section class="section">
     <div class="columns">
         <div class="column">
+            <form method="post">
             {{ form.hidden_tag() }}
             <div class="field">
                 <label class="label">
                     {{ form.start_at.label }}
                 </label>
                 <div class="control">
-                    {{ form.start_at(class='input', type='date') }}
+                    {{ form.start_at() }}
                 </div>
             </div>
             <div class="field">
@@ -30,14 +31,23 @@
             {% for entry in form.locations %}
             <div class="field">
                 <label class="label">
-                    {{ entry.label }}
+                    {{ entry.label.text }}
                 </label>
                 <div class="control">
                     <!-- note that to render each input field we need to access form attribute -->
-                    {{ entry.form.name.label }} {{ entry.form.name(class='input') }}
+                    {{ entry.form.name.label.text }} {{ entry.form.name(class='input') }}
                 </div>
             </div>
             {% endfor %}
+            <div class="field is-grouped">
+                <div class="control">
+                    {{ form.add_location(class='button is-primary') }}
+                </div>
+                <div class="control">
+                    {{ form.remove_location(class='button is-danger') }}
+                </div>
+            </div>
+            </form>
         </div>
     </div>
 </section>

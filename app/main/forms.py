@@ -3,7 +3,8 @@ from datetime import datetime
 from flask_wtf import FlaskForm
 from wtforms_alchemy import ModelForm as ModelAlchemyForm
 from wtforms_alchemy import model_form_factory, ModelFieldList
-from wtforms import FormField
+from wtforms import FormField, SubmitField
+from wtforms.widgets.html5 import DateInput
 from app import db
 from app.main.models import User, Event, Location
 from wtforms_components.fields import EmailField
@@ -33,4 +34,6 @@ class EventForm(ModelForm):
         model = Event
         field_args = {'start_at': {'default': arrow.get(datetime.today())}}
         date_format = '%d/%m/%Y'
-    locations = ModelFieldList(FormField(LocationForm), min_entries=5, max_entries=5)
+    locations = ModelFieldList(FormField(LocationForm), min_entries=1)
+    add_location = SubmitField(('Add'))
+    remove_location = SubmitField(('Remove'))
